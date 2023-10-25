@@ -9,7 +9,7 @@ gem 'rails', '~> 7.1.1'
 gem 'sprockets-rails'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 1.1'
 
 # Linter Check via rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
