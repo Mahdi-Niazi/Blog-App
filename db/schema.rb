@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_25_130643) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_25_131537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_130643) do
     t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_comment_tables_on_author_id"
     t.index ["post_id"], name: "index_comment_tables_on_post_id"
+  end
+
+  create_table "like_tables", force: :cascade do |t|
+    t.bigint "author_id"
+    t.bigint "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_like_tables_on_author_id"
+    t.index ["post_id"], name: "index_like_tables_on_post_id"
   end
 
   create_table "post_tables", force: :cascade do |t|
@@ -46,5 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_25_130643) do
 
   add_foreign_key "comment_tables", "post_tables", column: "post_id"
   add_foreign_key "comment_tables", "user_tables", column: "author_id"
+  add_foreign_key "like_tables", "post_tables", column: "post_id"
+  add_foreign_key "like_tables", "user_tables", column: "author_id"
   add_foreign_key "post_tables", "user_tables", column: "author_id"
 end
