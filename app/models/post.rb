@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   after_save :update_post_counter
 
   private
+
   def update_post_counter
     User.find(author_id).update(post_counter: Post.where(author_id).count)
   end
