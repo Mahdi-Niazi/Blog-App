@@ -4,6 +4,13 @@ RSpec.describe Post, type: :model do
   let(:user) { User.create(name: 'Test User', photo: 'photo.com', bio: 'Test User') }
   let(:post) { Post.create(title: 'Test post', author_id: user.id, comments_counter: 0, likes_counter: 0) }
 
+  describe 'validations' do
+    it 'validates presence of author' do
+      like.author = nil
+      expect(like).to_not be_valid
+      expect(like.errors.include?(:author)).to be(true)
+  end
+
   it 'validates presence of title' do
     post.title = ''
     expect(post).to_not be_valid

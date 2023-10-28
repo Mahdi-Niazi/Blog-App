@@ -6,6 +6,13 @@ RSpec.describe Comment, type: :model do
     Post.create(author_id: user.id, title: 'Test', text: 'Text Test', comments_counter: 0, likes_counter: 0)
   end
 
+  describe 'validations' do
+    it 'validates presence of author' do
+      comment.author = nil
+      expect(comment).to_not be_valid
+      expect(comment.errors.include?(:author)).to be(true)
+  end
+
   describe 'initialize' do
     before(:each) do
       @comment = Comment.new(post_id: post.id, author_id: user.id, text: 'This is a comment')
