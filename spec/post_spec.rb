@@ -9,6 +9,7 @@ RSpec.describe Post, type: :model do
       post.title = ''
       expect(post).to_not be_valid
       expect(post.errors.include?(:title)).to be(true)
+    end
   end
 
   it 'validates presence of title' do

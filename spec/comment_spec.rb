@@ -11,6 +11,7 @@ RSpec.describe Comment, type: :model do
       comment.author = nil
       expect(comment).to_not be_valid
       expect(comment.errors.include?(:author)).to be(true)
+    end
   end
 
   describe 'initialize' do

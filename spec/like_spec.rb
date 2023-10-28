@@ -9,6 +9,7 @@ RSpec.describe Post, type: :model do
       like.author = nil
       expect(like).to_not be_valid
       expect(like.errors.include?(:author)).to be(true)
+    end
   end
 
   it 'validates presence of title' do
